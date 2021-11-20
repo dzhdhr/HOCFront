@@ -1,0 +1,65 @@
+<body>
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile id="form" class="tabel">
+      <ng-container *ngIf="calculatedFlag">
+      <div class="table-wrapper">
+
+        <table class="fl-table">
+          <thead>
+          <tr>
+            <th>Label</th>
+            <th *ngFor="let item of result;let i = index">{{i}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of result;let i = index">
+            <th>{{i}}</th>
+            <td *ngFor="let x of item;let j =index">{{x}}</td>
+          </tr>
+          <tbody>
+        </table>
+      </div>
+      </ng-container>
+      <ng-container *ngIf="calculatingFlag&& !calculatedFlag">
+        <mat-card class = 'content' style="width: 100%">
+          {{this.content}}
+        </mat-card>
+      </ng-container>
+      <div>
+        <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+        <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
+        </ng-container>
+        <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+        <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
+        </ng-container>
+        <ng-container *ngIf="this.calculatedFlag">
+          <button mat-button color="primary" >Download</button>
+        </ng-container>
+        <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+          <button mat-button (click)="startCalculation($event)" color="warn" >
+            Calculate Result
+          </button>
+        </ng-container>
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile id ="content">
+      <mat-card class = 'content'>
+        <h1>Noise Matrix</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin purus. Cras id lacus sed magna pretium interdum in in erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque porttitor sed risus sed tempor. Aliquam posuere ipsum ipsum, non pharetra nisl scelerisque vel.
+        </p>
+        <p>
+          Aenean sed augue sodales, pharetra quam id, finibus tellus. Cras eleifend facilisis eros. Aliquam bibendum nec nulla vel imperdiet. Donec v Morbi pretium, dui sit amet volutpat venenatis, tortor metus lobortis nisi, vitae congue nunc ex et est. Duis consectetur dignissim augue, sit amet rhoncus justo pretium aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla imperdiet tortor ac scelerisque lobortis. Ut quis placerat sapien. Cras risus arcu, dignissim at pulvinar ut, luctus in libero. Vestibulum
+          in ex at enim rutrum fermentum.
+        </p>
+        <p>
+          <mat-list>
+            <mat-list-item> Pepper </mat-list-item>
+            <mat-list-item> Salt </mat-list-item>
+            <mat-list-item> Paprika </mat-list-item>
+          </mat-list>
+        </p>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</body>

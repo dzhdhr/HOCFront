@@ -1,0 +1,17 @@
+<mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile id="form">
+
+    <mat-card>2</mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile id ="content">
+    <div>
+      <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+        <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
+      </ng-container>
+      <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+        <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
+      </ng-container>
+
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

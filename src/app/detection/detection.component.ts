@@ -10,8 +10,9 @@ import {filter} from 'rxjs/operators';
 export class DetectionComponent implements OnInit {
   public calculatedFlag = false;
   public calculatingFlag = false;
+  public hasMatrix = false;
   public uploadFlag: boolean;
-  public result: number[][];
+  public result: number[];
   @Input()
   public featureFile: string;
   @Input()
@@ -36,14 +37,33 @@ export class DetectionComponent implements OnInit {
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
           this.calculatingFlag = rest.body['calculating'];
+          this.hasMatrix = rest.body['matrix'];
           this.calculatedFlag = rest.body['calculated'];
           console.log(rest);
+          console.log('hasmatrix' + this.hasMatrix);
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
+
           this.result = rest.body['payload'];
+          console.log(this.result);
         },
       );
     }
   }
 
+  calculateDataSet($event: MouseEvent): void{
+    this.changeFile.emit(2);
+  }
+
+  getNoise($event: MouseEvent): void {
+    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/getnoise?feature=' + this.featureFile + '&label=' + this.labelFile);
+    this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
+      (rest: HttpResponse<any>) => {
+        console.log(rest);
+        this.result = rest.body['result'];
+        console.log(this.result);
+        this.calculatedFlag = true;
+      }
+    );
+  }
 }

@@ -39,6 +39,7 @@ export class NoiseMatrixComponent implements OnInit {
         (rest: HttpResponse<any>) => {
           this.calculatingFlag = rest.body['calculating'];
           this.calculatedFlag = rest.body['calculated'];
+
           console.log(rest);
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
@@ -46,7 +47,6 @@ export class NoiseMatrixComponent implements OnInit {
         },
       );
     }
-    //this.result = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]];
   }
 
 

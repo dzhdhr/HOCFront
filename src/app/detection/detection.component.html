@@ -1,9 +1,34 @@
 <mat-grid-list cols="2" rowHeight="1:1">
-  <mat-grid-tile id="form">
+  <mat-grid-tile id="content">
 
     <mat-card>2</mat-card>
   </mat-grid-tile>
-  <mat-grid-tile id ="content">
+  <mat-grid-tile id ="form"  class="tabel">
+    <div>
+
+      <ng-container *ngIf="this.calculatedFlag">
+        <div class="table-wrapper">
+
+          <table class="fl-table">
+            <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Index</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of [].constructor(10);let i = index">
+              <th>{{i}}</th>
+              <td>{{this.result[i]}}</td>
+            </tr>
+
+
+            <tbody>
+          </table>
+        </div>
+      </ng-container>
+
+    </div>
     <div>
       <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
         <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
@@ -11,7 +36,12 @@
       <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
         <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
       </ng-container>
-
+      <ng-container *ngIf="!this.hasMatrix&&!(this.featureFile == undefined || this.labelFile == undefined)">
+        <button mat-button color="primary" (click)="calculateDataSet($event)">Calculate Matrix</button>
+      </ng-container>
+      <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+        <button mat-button color="warn" (click)="getNoise($event)" >Calculate Noise</button>
+      </ng-container>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

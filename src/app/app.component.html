@@ -9,7 +9,7 @@
   </mat-tab>
   <mat-tab label="Upload">
     <ng-template matTabContent>
-      <app-upload (featureToken)="changeFeatureFile($event)" (labelToken)="changeLabelFile($event)"></app-upload>
+      <app-upload (changePage)="changeFile($event)" (featureToken)="changeFeatureFile($event)" (labelToken)="changeLabelFile($event)" [feature]="featureToken" [label]="labelToken"></app-upload>
     </ng-template>
   </mat-tab>
   <mat-tab label="Noise Matrix">

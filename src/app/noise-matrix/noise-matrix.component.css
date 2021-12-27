@@ -3,6 +3,11 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+.content{
+  width: 90%;
+  height: 70%;
+  overflow: scroll
+}
 body{
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;

@@ -28,6 +28,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { HttpClientModule } from '@angular/common/http'
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,28 +39,29 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     UploadComponent,
     IntroductionComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatTabsModule,
-    MatButtonToggleModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatListModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSnackBarModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatTabsModule,
+        MatButtonToggleModule,
+        MatSidenavModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatListModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        ClipboardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

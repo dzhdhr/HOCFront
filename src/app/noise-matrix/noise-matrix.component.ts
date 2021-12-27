@@ -48,8 +48,6 @@ export class NoiseMatrixComponent implements OnInit {
       );
     }
   }
-
-
   changeDataSet($event: MouseEvent): void {
     this.changeFile.emit(1);
   }
@@ -83,5 +81,8 @@ export class NoiseMatrixComponent implements OnInit {
 
       );
     }, 1000);
+  }
+  changePage($event: MouseEvent): void {
+    this.changeFile.emit(3);
   }
 }

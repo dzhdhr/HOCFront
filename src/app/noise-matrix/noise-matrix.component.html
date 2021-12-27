@@ -21,8 +21,8 @@
       </div>
       </ng-container>
       <ng-container *ngIf="calculatingFlag&& !calculatedFlag">
-        <mat-card class = 'content' style="width: 100%">
-          {{this.content}}
+        <mat-card class = 'content'>
+          <pre>{{this.content}}</pre>
         </mat-card>
       </ng-container>
       <div>
@@ -48,17 +48,11 @@
         <h1>Noise Matrix</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin purus. Cras id lacus sed magna pretium interdum in in erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque porttitor sed risus sed tempor. Aliquam posuere ipsum ipsum, non pharetra nisl scelerisque vel.
         </p>
-        <p>
-          Aenean sed augue sodales, pharetra quam id, finibus tellus. Cras eleifend facilisis eros. Aliquam bibendum nec nulla vel imperdiet. Donec v Morbi pretium, dui sit amet volutpat venenatis, tortor metus lobortis nisi, vitae congue nunc ex et est. Duis consectetur dignissim augue, sit amet rhoncus justo pretium aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla imperdiet tortor ac scelerisque lobortis. Ut quis placerat sapien. Cras risus arcu, dignissim at pulvinar ut, luctus in libero. Vestibulum
-          in ex at enim rutrum fermentum.
-        </p>
-        <p>
-          <mat-list>
-            <mat-list-item> Pepper </mat-list-item>
-            <mat-list-item> Salt </mat-list-item>
-            <mat-list-item> Paprika </mat-list-item>
-          </mat-list>
-        </p>
+
+        <button mat-button color="primary" style="position:absolute;right:10%;bottom:10%" [disabled]="!this.calculatedFlag" (click)="changePage($event)">
+          Find Noisy Instance
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

@@ -4,8 +4,8 @@
             <mat-card-title>X Train</mat-card-title>
             <mat-form-field appearance="fill">
               <mat-label>Feature File</mat-label>
-              <input #FeatureInput hidden (change)="changeFile($event, 'feature')" type="file" onclick="this.value=null" />
-              <input matInput placeholder="Feature File" [value]="this.FeatureFile.name" disabled/>
+              <input #FeatureInput hidden (change)="changeFile($event, 'feature')" type="file" accept=".npy" onclick="this.value=null" />
+              <input matInput placeholder="Feature File" [value]="this.FeatureFile.name" disabled  />
             </mat-form-field>
             <button mat-button color="primary" (click)="FeatureInput.click()">Feature File</button>
           </mat-card>
@@ -13,10 +13,22 @@
     <mat-grid-tile colspan="2" rowspan="2">
       <mat-card class = 'content'>
       <h1>Data Requirements</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin purus. Cras id lacus sed magna pretium interdum in in erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque porttitor sed risus sed tempor. Aliquam posuere ipsum ipsum, non pharetra nisl scelerisque vel.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin pu.
       </p>
-        <button mat-button color="accent" disabled>Upload File</button>
+        <p> To save your dataset use the following code</p>
+        <div style="display: flex;flex-direction: row; justify-content:space-evenly;">
 
+          <pre>{{this.code}}</pre>
+          <button mat-button color="accent" [cdkCopyToClipboard]="this.code">
+            <mat-icon>file_copy</mat-icon>
+          </button>
+        </div>
+        <div>
+        <button style="position:absolute;right:10%;bottom:10%"  mat-button color="accent" [disabled]="this.label == undefined||this.feature == undefined" (click)="getNoise($event)">
+          Get Noise Matrix
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        </div>
     </mat-card>
     </mat-grid-tile>
   <mat-grid-tile colspan="2" rowspan="1" >
@@ -24,16 +36,11 @@
       <mat-card-title>Y Train</mat-card-title>
       <mat-form-field appearance="fill">
         <mat-label>Label File</mat-label>
-        <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" />
+        <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" accept=".npy" />
         <input matInput placeholder="Label File" [value]="this.LabelFile.name" disabled/>
       </mat-form-field>
       <button mat-button color="primary" (click)="LabelInput.click()">Label File</button>
     </mat-card>
   </mat-grid-tile>
-
-
-
-
-
 </mat-grid-list>
 

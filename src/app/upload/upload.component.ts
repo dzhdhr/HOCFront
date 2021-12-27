@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
 import {observable, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -14,12 +14,23 @@ export class UploadComponent implements OnInit {
 
   FeatureFile: File = new File([], '');
   LabelFile: File = new File([], '');
-
+  @Output()
+  changePage: EventEmitter<number> = new EventEmitter<number>();
+  @Input()
+  feature: string;
+  @Input()
+  label: string;
   @Output()
   featureToken: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
   labelToken: EventEmitter<string> = new EventEmitter<string>();
+
+  code =
+    '\tX_train # your feature numpy array\n' +
+    '\tY_train # your label numpy array\n' +
+    '\tnp.save([directory of your feature file],X_train)\n' +
+    '\tnp.save([directory of your label file],Y_train)';
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
@@ -58,11 +69,12 @@ export class UploadComponent implements OnInit {
           // @ts-ignore
           const result = res.body.body.fileid;
           console.log(result);
+          this.feature = result;
           this.featureToken.emit(result);
-          this.snackBar.open('Upload Success', 'close');
+          this.snackBar.open('Upload Success', 'Close');
         },
         err => {
-          console.log(err);
+          this.snackBar.open('Fail to Open Your File', 'RETRY');
         }
       );
       console.log('feature' + this.FeatureFile.name);
@@ -75,14 +87,19 @@ export class UploadComponent implements OnInit {
           // @ts-ignore
           const result = res.body.body.fileid;
           console.log(result);
+          this.label = result;
           this.labelToken.emit(result);
           this.snackBar.open('Upload Success', 'close');
         },
         err => {
-          console.log(err);
+          this.snackBar.open('Fail to Open Your File', 'RETRY');
         }
       );
     }
 
+  }
+
+  getNoise($event: MouseEvent): void {
+    this.changePage.emit(2);
   }
 }

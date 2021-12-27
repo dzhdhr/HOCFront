@@ -1,12 +1,12 @@
 <mat-grid-list cols="2" rowHeight="1:1">
   <mat-grid-tile id="content">
-
-    <mat-card>2</mat-card>
+    <mat-card class="content">2</mat-card>
   </mat-grid-tile>
   <mat-grid-tile id ="form"  class="tabel">
     <div>
 
       <ng-container *ngIf="this.calculatedFlag">
+        <h2> Find {{this.result.length}} Noisy Instance</h2>
         <div class="table-wrapper">
 
           <table class="fl-table">
@@ -18,13 +18,24 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of [].constructor(10);let i = index">
-              <th>{{i}}</th>
-              <td>{{this.result[i]}}</td>
+              <th>{{start+i}}</th>
+              <td>{{this.result[start+i]}}</td>
             </tr>
 
 
             <tbody>
           </table>
+          <div style="display: flex;justify-content: space-between">
+
+            <button mat-button color="primary" (click)="decrease()">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+              Prev 10
+            </button>
+            <button mat-button color="primary" (click)="increase()">
+              Next 10
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
         </div>
       </ng-container>
 

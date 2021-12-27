@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
 import {filter} from 'rxjs/operators';
+import {start} from 'repl';
 
 @Component({
   selector: 'app-detection',
@@ -13,6 +14,7 @@ export class DetectionComponent implements OnInit {
   public hasMatrix = false;
   public uploadFlag: boolean;
   public result: number[];
+  public start = 0;
   @Input()
   public featureFile: string;
   @Input()
@@ -36,15 +38,15 @@ export class DetectionComponent implements OnInit {
       const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkdetectionresult?feature=' + this.featureFile + '&label=' + this.labelFile);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
-          this.calculatingFlag = rest.body['calculating'];
-          this.hasMatrix = rest.body['matrix'];
-          this.calculatedFlag = rest.body['calculated'];
+          this.calculatingFlag = rest.body.calculating;
+          this.hasMatrix = rest.body.matrix;
+          this.calculatedFlag = rest.body.calculated;
           console.log(rest);
           console.log('hasmatrix' + this.hasMatrix);
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
 
-          this.result = rest.body['payload'];
+          this.result = rest.body.payload;
           console.log(this.result);
         },
       );
@@ -60,10 +62,21 @@ export class DetectionComponent implements OnInit {
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);
-        this.result = rest.body['result'];
+        this.result = rest.body.result;
         console.log(this.result);
         this.calculatedFlag = true;
       }
     );
+  }
+
+  increase(): void{
+    if (this.start < this.result.length - 10){
+      this.start += 10;
+    }
+  }
+  decrease(): void{
+    if (this.start >= 10){
+      this.start -= 10;
+    }
   }
 }

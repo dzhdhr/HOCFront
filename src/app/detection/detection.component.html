@@ -40,16 +40,16 @@
 
     </div>
     <div>
-      <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+      <ng-container *ngIf="!(this.uploadFlag)">
         <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
       </ng-container>
-      <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+      <ng-container *ngIf="(this.uploadFlag)">
         <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
       </ng-container>
-      <ng-container *ngIf="!this.hasMatrix&&!(this.featureFile == undefined || this.labelFile == undefined)">
+      <ng-container *ngIf="!this.hasMatrix&&!(this.uploadFlag)">
         <button mat-button color="primary" (click)="calculateDataSet($event)">Calculate Matrix</button>
       </ng-container>
-      <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+      <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.uploadFlag)">
         <button mat-button color="warn" (click)="getNoise($event)" >Calculate Noise</button>
       </ng-container>
     </div>
@@ -61,16 +61,16 @@
     <mat-grid-tile>
 
       <mat-card class="full">
-        <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+        <ng-container *ngIf="!(this.uploadFlag)">
           <button mat-button color="primary" style="position: absolute;top: 5%;right: 10%" (click)="changeDataSet($event)">Change Dataset</button>
         </ng-container>
-        <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+        <ng-container *ngIf="(this.uploadFlag)">
           <button mat-button color="accent" style="position: absolute;top: 10%;right: 10%" (click)="changeDataSet($event)">Upload Dataset</button>
         </ng-container>
-        <ng-container *ngIf="!this.hasMatrix&&!(this.featureFile == undefined || this.labelFile == undefined)">
+        <ng-container *ngIf="!this.hasMatrix&&!(this.uploadFlag)">
           <button mat-button color="primary" style="position: absolute;top: 10%;right: 10%" (click)="calculateDataSet($event)">Calculate Matrix</button>
         </ng-container>
-        <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+        <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.uploadFlag)">
           <button mat-button color="warn"  style="position: absolute;top: 10%;right: 10%" (click)="getNoise($event)" >Calculate Noise</button>
         </ng-container>
         <mat-card-title>Noise Transition Matrix T</mat-card-title>

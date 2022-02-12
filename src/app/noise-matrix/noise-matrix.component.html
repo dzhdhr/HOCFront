@@ -1,5 +1,5 @@
 <body>
-  <mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-list cols="2" rowHeight="1:1" *ngIf="this.calculatedFlag||this.calculatingFlag">
     <mat-grid-tile id="form" class="tabel">
       <ng-container *ngIf="calculatedFlag">
       <div class="table-wrapper">
@@ -56,4 +56,77 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+
+
+  <div *ngIf="!(this.calculatedFlag||this.calculatingFlag)">
+    <mat-grid-list cols="1" rowHeight="2:1">
+
+      <mat-grid-tile>
+
+        <mat-card class="full">
+          <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+            <button mat-button color="primary" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Change Dataset</button>
+          </ng-container>
+          <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)" >
+            <button mat-button color="accent" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Upload Dataset</button>
+          </ng-container>
+          <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+            <button mat-button (click)="startCalculation($event)" color="warn" style="position: absolute;top: 15%;right: 10%">
+              Calculate Result
+            </button>
+          </ng-container>
+          <mat-card-title>Noise Transition Matrix T</mat-card-title>
+          <ul>
+            <li style="size: 12px">Each element of T : T_ij = P ( ŷ = j | y = i ).Clean label i ➜ Noisy label j
+            </li>
+            <li>Example: Our self-collected CIFAR-10 human annotations:
+            </li>
+            <img src="assets/noise_matrix.png">
+            <li>
+            The Noise Transition Matrix T will be:
+              <div class="table-wrapper">
+
+                <table class="fl-table">
+                  <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>1</th>
+                    <th>2</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <th>1</th>
+                    <td>0.6</td>
+                    <td>0.4</td>
+                  </tr>
+                  <tr>
+                    <th>2</th>
+                    <td>0.2</td>
+                    <td>0.8</td>
+                  </tr>
+                  <tbody>
+                </table>
+              </div>
+            </li>
+            <li>Learn how we did Find the Matrix:<br>
+              <button mat-button color="warn" style="margin: 10px">
+                <mat-icon>description</mat-icon>
+                Paper
+              </button>
+              <button mat-button color="accent">
+                <mat-icon>code</mat-icon>
+                Code
+              </button>
+            </li>
+
+
+          </ul>
+          <mat-card-actions align="">
+
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </body>

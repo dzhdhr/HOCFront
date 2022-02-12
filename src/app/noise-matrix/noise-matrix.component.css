@@ -8,6 +8,12 @@
   height: 70%;
   overflow: scroll
 }
+.full{
+  width: 90%;
+
+  position: center;
+
+}
 body{
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;

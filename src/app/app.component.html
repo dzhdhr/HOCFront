@@ -4,7 +4,7 @@
 <mat-tab-group mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
   <mat-tab label="Introduction">
     <ng-template matTabContent>
-      <app-introduction></app-introduction>
+      <app-introduction (changeFile)="changeFile($event)"></app-introduction>
     </ng-template>
   </mat-tab>
   <mat-tab label="Upload">
@@ -24,5 +24,4 @@
     </ng-template>
   </mat-tab>
 </mat-tab-group>
-<app-footer></app-footer>
 <!--<app-dashboard></app-dashboard>-->

@@ -1,21 +1,76 @@
-<mat-grid-list cols="2" rowHeight="1:1">
-  <mat-grid-tile id="form">
-    <mat-card class = 'content'>
-      <h1>Data Requirements</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin purus. Cras id lacus sed magna pretium interdum in in erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque porttitor sed risus sed tempor. Aliquam posuere ipsum ipsum, non pharetra nisl scelerisque vel.
-      </p>
-      <p>
-        <mat-list>
-          <mat-list-item> Pepper </mat-list-item>
-          <mat-list-item> Salt </mat-list-item>
-          <mat-list-item> Paprika </mat-list-item>
-        </mat-list>
-      </p>
+<mat-grid-list cols="6" gutterSize="30px" style="margin: 30px">
+  <mat-grid-tile
+    [colspan]="tiles[0].cols"
+    [rowspan]="tiles[0].rows"
+
+  >
+    <mat-card>
+      <h1 >Demo for HOC</h1>
+      <h3 >Estimating the noise transition matrix based on High-Order-Consensus (HOC) of noisy labels</h3>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile id ="content">
+  <mat-grid-tile
+    [colspan]="tiles[1].cols"
+    [rowspan]="tiles[1].rows"
+  >
     <mat-card>
-      <img src="https://via.placeholder.com/300/09f/fff.png/">
+      <mat-card-title>Upload</mat-card-title>
+      In the upload page, we will aks you to upload 2 *.npy file.
+      <br>
+      <button mat-button color="accent"><mat-icon>cloud_upload</mat-icon> Upload</button>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="tiles[2].cols"
+    [rowspan]="tiles[2].rows"
+  >
+    <mat-card class="card-style">
+      <mat-card-title>Noise Transition Matrix</mat-card-title>
+      <div style="font-size: 14px">
+      You will get the noise transition matrix estimated by our method,<b> HOC</b>.
+      </div>
+      <div style="font-size: 14px">
+        Check the definition of Noise Transition Matrix <a href="#" (click)="changeEvent(2)">here</a>!
+
+
+      </div>
+      </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="tiles[3].cols"
+    [rowspan]="tiles[3].rows"
+  >
+    <mat-card class="card-style">
+      <mat-card-title>Noise Detection</mat-card-title>
+      We can also detect noisy labels based on HOC. <a href="#" (click)="changeEvent(3)">Take a look!</a>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="tiles[4].cols"
+    [rowspan]="tiles[4].rows"
+    [style.background]="tiles[6].cols"
+  >
+    <mat-card class="card-style">
+      <mat-card-title>Methodology</mat-card-title>
+      Our method is training-free. Check more detailed methodology here!
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="tiles[5].cols"
+    [rowspan]="tiles[5].rows"
+  >
+    <mat-card class="card-style">
+      <mat-card-title>Contributors</mat-card-title>
+      Learn more about our <a>team</a>.
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="tiles[6].cols"
+    [rowspan]="tiles[6].rows"
+  >
+    <mat-card class="card-style">
+      <mat-card-title>Reference & Contact</mat-card-title>
+      Please contact us via <br><b>"zwzhu,zdong14,yangliu"@ucsc.edu</b> <br>If you have any comments or questions!
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

@@ -1,4 +1,5 @@
-<mat-grid-list cols="2" rowHeight="1:1">
+<body >
+<mat-grid-list cols="2" rowHeight="1:1" *ngIf="this.calculatedFlag||this.calculatingFlag">
   <mat-grid-tile id="content">
     <mat-card class="content">2</mat-card>
   </mat-grid-tile>
@@ -21,8 +22,6 @@
               <th>{{start+i}}</th>
               <td>{{this.result[start+i]}}</td>
             </tr>
-
-
             <tbody>
           </table>
           <div style="display: flex;justify-content: space-between">
@@ -56,3 +55,78 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<div *ngIf="!(this.calculatedFlag||this.calculatingFlag)">
+  <mat-grid-list cols="1" rowHeight="2:1">
+
+    <mat-grid-tile>
+
+      <mat-card class="full">
+        <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+          <button mat-button color="primary" style="position: absolute;top: 5%;right: 10%" (click)="changeDataSet($event)">Change Dataset</button>
+        </ng-container>
+        <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+          <button mat-button color="accent" style="position: absolute;top: 10%;right: 10%" (click)="changeDataSet($event)">Upload Dataset</button>
+        </ng-container>
+        <ng-container *ngIf="!this.hasMatrix&&!(this.featureFile == undefined || this.labelFile == undefined)">
+          <button mat-button color="primary" style="position: absolute;top: 10%;right: 10%" (click)="calculateDataSet($event)">Calculate Matrix</button>
+        </ng-container>
+        <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+          <button mat-button color="warn"  style="position: absolute;top: 10%;right: 10%" (click)="getNoise($event)" >Calculate Noise</button>
+        </ng-container>
+        <mat-card-title>Noise Transition Matrix T</mat-card-title>
+        <ul>
+          <li style="size: 12px">Each element of T : T_ij = P ( ŷ = j | y = i ).Clean label i ➜ Noisy label j
+          </li>
+          <li>Example: Our self-collected CIFAR-10 human annotations:
+          </li>
+          <img src="assets/noise_matrix.png">
+          <li>
+            The Noise Transition Matrix T will be:
+            <div class="table-wrapper">
+
+              <table class="fl-table">
+                <thead>
+                <tr>
+                  <th>Label</th>
+                  <th>1</th>
+                  <th>2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>0.6</td>
+                  <td>0.4</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>0.2</td>
+                  <td>0.8</td>
+                </tr>
+                <tbody>
+              </table>
+            </div>
+          </li>
+          <li>Learn how we did Find the Matrix:<br>
+            <button mat-button color="warn" style="margin: 10px">
+              <mat-icon>description</mat-icon>
+              Paper
+            </button>
+            <button mat-button color="accent">
+              <mat-icon>code</mat-icon>
+              Code
+            </button>
+          </li>
+
+
+        </ul>
+        <mat-card-actions align="">
+
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+</body>
+

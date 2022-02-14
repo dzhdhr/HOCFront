@@ -33,7 +33,7 @@ export class DetectionComponent implements OnInit {
     }
     else{
       // tslint:disable-next-line:max-line-length
-      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkdetectionresult?token=' + this.token);
+      const req = new HttpRequest('GET', '/api/checkdetectionresult?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
           this.calculatingFlag = rest.body.calculating;
@@ -59,7 +59,7 @@ export class DetectionComponent implements OnInit {
   }
 
   getNoise($event: MouseEvent): void {
-    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/getnoise?token=' + this.token);
+    const req = new HttpRequest('GET', '/api/getnoise?token=' + this.token);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);

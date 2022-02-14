@@ -16,9 +16,7 @@ export class DetectionComponent implements OnInit {
   public result: number[];
   public start = 0;
   @Input()
-  public featureFile: string;
-  @Input()
-  public labelFile: string;
+  public token: string;
   @Output()
   changeFile: EventEmitter<number> = new EventEmitter<number>();
 
@@ -29,19 +27,22 @@ export class DetectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.featureFile == undefined || this.labelFile == undefined){
+    if (this.token == undefined){
       console.log('need upload');
-      this.uploadFlag = false;
+      this.uploadFlag = true;
     }
     else{
       // tslint:disable-next-line:max-line-length
-      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkdetectionresult?feature=' + this.featureFile + '&label=' + this.labelFile);
+      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkdetectionresult?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
           this.calculatingFlag = rest.body.calculating;
+          this.uploadFlag = !(rest.body['feature'] && rest.body['label']);
+
           this.hasMatrix = rest.body.matrix;
           this.calculatedFlag = rest.body.calculated;
           console.log(rest);
+          console.log(this.uploadFlag);
           console.log('hasmatrix' + this.hasMatrix);
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
@@ -58,7 +59,7 @@ export class DetectionComponent implements OnInit {
   }
 
   getNoise($event: MouseEvent): void {
-    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/getnoise?feature=' + this.featureFile + '&label=' + this.labelFile);
+    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/getnoise?token=' + this.token);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);

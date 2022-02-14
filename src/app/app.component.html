@@ -9,18 +9,18 @@
   </mat-tab>
   <mat-tab label="Upload">
     <ng-template matTabContent>
-      <app-upload (changePage)="changeFile($event)" (featureToken)="changeFeatureFile($event)" (labelToken)="changeLabelFile($event)" [feature]="featureToken" [label]="labelToken"></app-upload>
+      <app-upload (changePage)="changeFile($event)" (changeToken)="changeToken($event)" [token]="this.token"></app-upload>
     </ng-template>
   </mat-tab>
   <mat-tab label="Noise Matrix">
     <ng-template matTabContent>
-      <app-noise-matrix (changeFile)="changeFile($event)" [featureFile]='featureToken' [labelFile]="labelToken" ></app-noise-matrix>
+      <app-noise-matrix (changeFile)="changeFile($event)" [token]="this.token" ></app-noise-matrix>
     </ng-template>
 
   </mat-tab>
   <mat-tab label="Noise Detect">
     <ng-template matTabContent>
-    <app-detection (changeFile)="changeFile($event)" [featureFile]="featureToken" [labelFile]="labelToken"></app-detection>
+    <app-detection (changeFile)="changeFile($event)" [token]="this.token"></app-detection>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

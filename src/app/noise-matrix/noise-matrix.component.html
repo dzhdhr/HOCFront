@@ -26,16 +26,16 @@
         </mat-card>
       </ng-container>
       <div>
-        <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+        <ng-container *ngIf="!uploadFlag">
         <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
         </ng-container>
-        <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)">
+        <ng-container *ngIf="(this.uploadFlag)">
         <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
         </ng-container>
         <ng-container *ngIf="this.calculatedFlag">
           <button mat-button color="primary" >Download</button>
         </ng-container>
-        <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+        <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(uploadFlag)">
           <button mat-button (click)="startCalculation($event)" color="warn" >
             Calculate Result
           </button>
@@ -64,13 +64,13 @@
       <mat-grid-tile>
 
         <mat-card class="full">
-          <ng-container *ngIf="!(this.featureFile == undefined || this.labelFile == undefined)">
+          <ng-container *ngIf="!(this.uploadFlag)">
             <button mat-button color="primary" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Change Dataset</button>
           </ng-container>
-          <ng-container *ngIf="(this.featureFile== undefined||this.labelFile==undefined)" >
+          <ng-container *ngIf="(this.uploadFlag)" >
             <button mat-button color="accent" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Upload Dataset</button>
           </ng-container>
-          <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.featureFile == undefined || this.labelFile == undefined)">
+          <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.uploadFlag)">
             <button mat-button (click)="startCalculation($event)" color="warn" style="position: absolute;top: 15%;right: 10%">
               Calculate Result
             </button>

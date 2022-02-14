@@ -10,13 +10,17 @@ import {FormControl} from '@angular/forms';
 export class AppComponent {
   title = 'HOCFront';
   featureToken: string;
+  token: string;
   labelToken: string;
   selected = new FormControl(0);
   changeFeatureFile(event: string): void  {
     console.log('feature', event);
     this.featureToken = event;
   }
-
+  changeToken(event: string): void{
+    console.log('feature', event);
+    this.token = event;
+  }
   changeLabelFile(event: string): void {
     console.log('label', event);
     this.labelToken = event;

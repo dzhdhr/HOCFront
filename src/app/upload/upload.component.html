@@ -1,5 +1,6 @@
 <mat-grid-list cols="4" >
-    <mat-grid-tile colspan="2" rowspan="1" >
+    <mat-grid-tile  colspan="2" rowspan="2" >
+      <div class="form">
           <mat-card>
             <mat-card-title>X Train</mat-card-title>
             <mat-form-field appearance="fill">
@@ -9,7 +10,53 @@
             </mat-form-field>
             <button mat-button color="primary" (click)="FeatureInput.click()">Feature File</button>
           </mat-card>
+      <mat-card>
+              <mat-card-title>Y Train</mat-card-title>
+              <mat-form-field appearance="fill">
+                <mat-label>Label File</mat-label>
+                <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" accept=".npy" />
+                <input matInput placeholder="Label File" [value]="this.LabelFile.name" disabled/>
+              </mat-form-field>
+              <button mat-button color="primary" (click)="LabelInput.click()">Label File</button>
+      </mat-card>
+        <mat-card *ngIf="token!=undefined">
+          <mat-card-title>YourToken</mat-card-title>
+          <mat-form-field appearance="fill">
+          <input matInput placeholder="Label File" [value]="this.token" disabled/>
+          </mat-form-field>
+          <button mat-button color="primary" [cdkCopyToClipboard]="this.token">Copy</button>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-title>YourToken</mat-card-title>
+          <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="this.enteredToken" placeholder="Token" [value]="this.enteredToken"/>
+          </mat-form-field>
+          <button mat-button color="primary"   (click)="enterToken($event)">Enter</button>
+        </mat-card>
+        </div>
     </mat-grid-tile>
+<!--    <mat-grid-tile colspan="1" rowspan="1" >-->
+<!--    <mat-card>-->
+<!--      <mat-card-title>Y Train</mat-card-title>-->
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Label File</mat-label>-->
+<!--        <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" accept=".npy" />-->
+<!--        <input matInput placeholder="Label File" [value]="this.LabelFile.name" disabled/>-->
+<!--      </mat-form-field>-->
+<!--      <button mat-button color="primary" (click)="LabelInput.click()">Label File</button>-->
+<!--    </mat-card>-->
+<!--  </mat-grid-tile>-->
+<!--    <mat-grid-tile colspan="1" rowspan="1">-->
+<!--    <mat-card>-->
+<!--      Test-->
+<!--    </mat-card>-->
+<!--  </mat-grid-tile>-->
+<!--    <mat-grid-tile colspan="1" rowspan="1">-->
+<!--    <mat-card>-->
+<!--      Test-->
+<!--    </mat-card>-->
+<!--  </mat-grid-tile>-->
     <mat-grid-tile colspan="2" rowspan="2">
       <mat-card class = 'content'>
       <h1>Data Requirements</h1>
@@ -29,23 +76,13 @@
           </button>
         </div>
         <div>
-        <button style="position:absolute;right:10%;bottom:10%"  mat-button color="accent" [disabled]="this.label == undefined||this.feature == undefined" (click)="getNoise($event)">
+        <button style="position:absolute;right:10%;bottom:10%"  mat-button color="accent" [disabled]="this.token == undefined" (click)="getNoise($event)">
           Get Noise Matrix
           <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
         </div>
     </mat-card>
     </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1" >
-    <mat-card>
-      <mat-card-title>Y Train</mat-card-title>
-      <mat-form-field appearance="fill">
-        <mat-label>Label File</mat-label>
-        <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" accept=".npy" />
-        <input matInput placeholder="Label File" [value]="this.LabelFile.name" disabled/>
-      </mat-form-field>
-      <button mat-button color="primary" (click)="LabelInput.click()">Label File</button>
-    </mat-card>
-  </mat-grid-tile>
+
 </mat-grid-list>
 

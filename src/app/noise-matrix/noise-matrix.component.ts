@@ -10,12 +10,10 @@ import {filter} from 'rxjs/operators';
 
 export class NoiseMatrixComponent implements OnInit {
   @Input()
-  public featureFile: string;
-  @Input()
-  public labelFile: string;
+  public token: string;
   public result: number[][];
   displayedColumns: string[] = ['1', '2', '3', '4'];
-  private uploadFlag = true;
+  public uploadFlag = true;
   public calculatedFlag = false;
   public calculatingFlag = false;
   public content: string;
@@ -26,21 +24,21 @@ export class NoiseMatrixComponent implements OnInit {
 
   ngOnInit(): void {
     // tslint:disable-next-line:max-line-length
-    if (this.featureFile == undefined || this.labelFile == undefined){
+    if (this.token == undefined){
       console.log('need upload');
-      this.uploadFlag = false;
+      this.uploadFlag = true;
     }
     else{
-      const params = new HttpParams()
-        .set('feature', this.featureFile)
-        .set('label', this.labelFile);
-      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkresult?feature=' + this.featureFile + '&label=' + this.labelFile);
+      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkstatus?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
+          console.log(rest);
+          this.uploadFlag = !(rest.body['feature'] && rest.body['label']);
+          console.log(this.uploadFlag);
           this.calculatingFlag = rest.body['calculating'];
           this.calculatedFlag = rest.body['calculated'];
 
-          console.log(rest);
+
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
           this.result = rest.body['payload'];
@@ -52,12 +50,12 @@ export class NoiseMatrixComponent implements OnInit {
     this.changeFile.emit(1);
   }
   startCalculation($event: MouseEvent): void{
-    console.log("start calculating");
-    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/calculate?feature=' + this.featureFile + '&label=' + this.labelFile);
+    console.log('start calculating');
+    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/calculate?token=' + this.token);
     this.http.request(req).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);
-        if (rest.body!=undefined) {
+        if (rest.body != undefined) {
           this.calculatingFlag = false;
           this.calculatedFlag = true;
           console.log(rest.body.T);
@@ -66,7 +64,7 @@ export class NoiseMatrixComponent implements OnInit {
       }
     );
     this.calculatingFlag = true;
-    const getlogreq = new HttpRequest('GET', 'http://127.0.0.1:5000/getlog?file=' + this.featureFile);
+    const getlogreq = new HttpRequest('GET', 'http://127.0.0.1:5000/getlog?file=' + this.token);
     this.interval = setInterval(() => {
       this.http.request(getlogreq).subscribe(
         (rest: HttpResponse<any>) => {

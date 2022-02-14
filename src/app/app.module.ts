@@ -29,6 +29,7 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { HttpClientModule } from '@angular/common/http'
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
         MatSortModule,
         MatSnackBarModule,
         HttpClientModule,
-        ClipboardModule
+        ClipboardModule,
+        FormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

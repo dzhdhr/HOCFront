@@ -35,7 +35,7 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFile(Body: FormData): Observable<any> {
-    const req = new HttpRequest('POST', 'http://127.0.0.1:5000/upload', Body);
+    const req = new HttpRequest('POST', '/api/upload', Body);
     return new Observable((observable) => {
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse))
         .subscribe((data) => {
@@ -78,7 +78,7 @@ export class UploadComponent implements OnInit {
 
   enterToken($event: MouseEvent): void {
     console.log(this.enteredToken);
-    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checktoken?token=' + this.enteredToken);
+    const req = new HttpRequest('GET', '/api/checktoken?token=' + this.enteredToken);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);

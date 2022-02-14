@@ -29,7 +29,7 @@ export class NoiseMatrixComponent implements OnInit {
       this.uploadFlag = true;
     }
     else{
-      const req = new HttpRequest('GET', 'http://127.0.0.1:5000/checkstatus?token=' + this.token);
+      const req = new HttpRequest('GET', '/api/checkstatus?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
           console.log(rest);
@@ -51,7 +51,7 @@ export class NoiseMatrixComponent implements OnInit {
   }
   startCalculation($event: MouseEvent): void{
     console.log('start calculating');
-    const req = new HttpRequest('GET', 'http://127.0.0.1:5000/calculate?token=' + this.token);
+    const req = new HttpRequest('GET', '/api/calculate?token=' + this.token);
     this.http.request(req).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);
@@ -64,7 +64,7 @@ export class NoiseMatrixComponent implements OnInit {
       }
     );
     this.calculatingFlag = true;
-    const getlogreq = new HttpRequest('GET', 'http://127.0.0.1:5000/getlog?file=' + this.token);
+    const getlogreq = new HttpRequest('GET', '/api/getlog?file=' + this.token);
     this.interval = setInterval(() => {
       this.http.request(getlogreq).subscribe(
         (rest: HttpResponse<any>) => {

@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
 import {filter} from 'rxjs/operators';
-import {start} from 'repl';
 
 @Component({
   selector: 'app-detection',
   templateUrl: './detection.component.html',
-  styleUrls: ['./detection.component.css']
+  styleUrls: ['../../assets/nicepage.css', './detection.component.css']
 })
+//9ba989db-4215-4131-bbb6-7249113a8408
 export class DetectionComponent implements OnInit {
   public calculatedFlag = false;
   public calculatingFlag = false;

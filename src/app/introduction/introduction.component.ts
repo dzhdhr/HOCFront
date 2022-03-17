@@ -11,27 +11,19 @@ export interface Tile {
 @Component({
   selector: 'app-introduction',
   templateUrl: './introduction.component.html',
-  styleUrls: ['./introduction.component.css']
+  styleUrls: ['../../assets/nicepage.css', './introduction.component.css']
 })
 export class IntroductionComponent implements OnInit {
   @Output()
-  changeFile: EventEmitter<number> = new EventEmitter<number>();
+  changePage: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
-  tiles: Tile[] = [
-    {text: 'one', cols: 6, rows: 1, color: 'lightblue'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightpink'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightpink'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightpink'},
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-  ];
   ngOnInit(): void {
   }
 
    changeEvent(num: number): void {
-    this.changeFile.emit(num);
+    // console.log("change");
+    this.changePage.emit(num);
 
   }
 }

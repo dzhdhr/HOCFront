@@ -9,7 +9,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { NoiseMatrixComponent } from './noise-matrix/noise-matrix.component';
 import { DetectionComponent } from './detection/detection.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -26,19 +25,20 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { IntroductionComponent } from './introduction/introduction.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {FormsModule} from '@angular/forms';
+import { AboutUsComponent } from './about-us/about-us.component';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    NavbarComponent,
     NoiseMatrixComponent,
     DetectionComponent,
     UploadComponent,
     IntroductionComponent,
+    AboutUsComponent,
   ],
     imports: [
         BrowserModule,

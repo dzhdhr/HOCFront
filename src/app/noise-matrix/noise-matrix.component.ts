@@ -5,7 +5,7 @@ import {filter} from 'rxjs/operators';
 @Component({
   selector: 'app-noise-matrix',
   templateUrl: './noise-matrix.component.html',
-  styleUrls: ['./noise-matrix.component.css']
+  styleUrls: ['./noise-matrix.component.css' , '../../assets/nicepage.css']
 })
 
 export class NoiseMatrixComponent implements OnInit {

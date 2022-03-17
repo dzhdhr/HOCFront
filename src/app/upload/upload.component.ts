@@ -2,13 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
 import {observable, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {error} from 'protractor';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css']
+  styleUrls: ['./upload.component.css', '../../assets/nicepage.css']
 })
 export class UploadComponent implements OnInit {
 
@@ -31,6 +30,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // console.log("here");
     console.log(this.token);
   }
 
@@ -72,16 +72,12 @@ export class UploadComponent implements OnInit {
     );
   }
 
-  getNoise($event: MouseEvent): void {
-    this.changePage.emit(2);
-  }
-
   enterToken($event: MouseEvent): void {
     console.log(this.enteredToken);
     const req = new HttpRequest('GET', '/api/checktoken?token=' + this.enteredToken);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
-        console.log(rest);
+        // console.log(rest);
         if (rest.body.has_token){
           this.token = this.enteredToken;
           this.changeToken.emit(this.token);

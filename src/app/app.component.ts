@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', '../assets/nicepage.css']
 })
 export class AppComponent {
   title = 'HOCFront';
@@ -13,21 +13,21 @@ export class AppComponent {
   token: string;
   labelToken: string;
   selected = new FormControl(0);
-  changeFeatureFile(event: string): void  {
-    console.log('feature', event);
-    this.featureToken = event;
-  }
+  // changeFeatureFile(event: string): void  {
+  //   console.log('feature', event);
+  //   this.featureToken = event;
+  // }
   changeToken(event: string): void{
     console.log('feature', event);
     this.token = event;
   }
-  changeLabelFile(event: string): void {
-    console.log('label', event);
-    this.labelToken = event;
-  }
+  // changeLabelFile(event: string): void {
+  //   console.log('label', event);
+  //   this.labelToken = event;
+  // }
 
-  changeFile(event: number): void {
+  changePage(event: number): void {
     this.selected.setValue(event);
-    console.log('change');
+    console.log('change recived');
   }
 }

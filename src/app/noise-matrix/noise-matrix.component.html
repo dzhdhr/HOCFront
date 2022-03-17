@@ -1,132 +1,153 @@
-<body>
-  <mat-grid-list cols="2" rowHeight="1:1" *ngIf="this.calculatedFlag||this.calculatingFlag">
-    <mat-grid-tile id="form" class="tabel">
-      <ng-container *ngIf="calculatedFlag">
-      <div class="table-wrapper">
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en-AM">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Estimation</title>
+<!--  <link rel="stylesheet" href="nicepage.css" media="screen">-->
+<!--  <link rel="stylesheet" href="Estimation.css" media="screen">-->
+<!--  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>-->
+<!--  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>-->
+  <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
-        <table class="fl-table">
-          <thead>
-          <tr>
-            <th>Label</th>
-            <th *ngFor="let item of result;let i = index">{{i}}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of result;let i = index">
-            <th>{{i}}</th>
-            <td *ngFor="let x of item;let j =index">{{x}}</td>
-          </tr>
-          <tbody>
-        </table>
+
+
+
+  <meta name="theme-color" content="#232b79">
+  <meta property="og:title" content="Estimation">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+</head>
+<body class="u-body u-xl-mode"><header class="u-clearfix u-header u-header" id="sec-a184"><div class="u-clearfix u-sheet u-sheet-1">
+  <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
+    <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 500;">
+      <a class="u-button-style u-custom-active-color u-custom-border u-custom-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+        <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+        <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+        </g></svg>
+      </a>
+    </div>
+    <div class="u-custom-menu u-nav-container">
+      <ul class="u-nav u-spacing-2 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="Home.html" style="padding: 10px 20px;">Home</a>
+      </li><li class="u-nav-item"><a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="Upload.html" style="padding: 10px 20px;">Upload</a>
+      </li><li class="u-nav-item"><a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="Estimation.html" style="padding: 10px 20px;">Estimation</a>
+      </li><li class="u-nav-item"><a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="Detection.html" style="padding: 10px 20px;">Detection</a>
+      </li><li class="u-nav-item"><a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="Contributors.html" style="padding: 10px 20px;">Contributors</a>
+      </li></ul>
+    </div>
+    <div class="u-custom-menu u-nav-container-collapse">
+      <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+        <div class="u-inner-container-layout u-sidenav-overflow">
+          <div class="u-menu-close"></div>
+          <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html" style="padding: 10px 20px;">Home</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Upload.html" style="padding: 10px 20px;">Upload</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Estimation.html" style="padding: 10px 20px;">Estimation</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Detection.html" style="padding: 10px 20px;">Detection</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contributors.html" style="padding: 10px 20px;">Contributors</a>
+          </li></ul>
+        </div>
       </div>
-      </ng-container>
-      <ng-container *ngIf="calculatingFlag&& !calculatedFlag">
-        <mat-card class = 'content'>
-          <pre>{{this.content}}</pre>
-        </mat-card>
-      </ng-container>
-      <div>
-        <ng-container *ngIf="!uploadFlag">
-        <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>
-        </ng-container>
-        <ng-container *ngIf="(this.uploadFlag)">
-        <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>
-        </ng-container>
-        <ng-container *ngIf="this.calculatedFlag">
-          <button mat-button color="primary" >Download</button>
-        </ng-container>
-        <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(uploadFlag)">
-          <button mat-button (click)="startCalculation($event)" color="warn" >
-            Calculate Result
-          </button>
-        </ng-container>
+      <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+    </div>
+  </nav>
+  <a href="http://www.yliuu.com/" class="u-active-none u-align-left u-border-2 u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank"> REsponsible &amp; Accountable Learning (REAL)&nbsp;<br>@ University of California, Santa Cruz
+  </a>
+  <a (click)="this.changeFile.emit(0)" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-2">home</a>
+  <a (click)="this.changeFile.emit(1)" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-3">Upload</a>
+  <a  (click)="this.changeFile.emit(4)" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-4">Contributor</a>
+</div>
+</header>
+<section class="u-align-center u-clearfix u-section-1" id="sec-7d0f">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout" style="">
+        <div class="u-layout-row" style="">
+          <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1080" data-image-height="1080">
+            <div class="u-container-layout u-valign-middle u-container-layout-1" src="">
+              <ng-container *ngIf="calculatingFlag&& !calculatedFlag">{{this.content}}</ng-container>
+              <ng-container *ngIf="calculatedFlag">
+                <div class="table-wrapper">
+                  <table class="fl-table">
+                    <thead>
+                    <tr>
+                      <th>Label</th>
+                      <th *ngFor="let item of result;let i = index">{{i}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of result;let i = index">
+                      <th>{{i}}</th>
+                      <td *ngFor="let x of item;let j =index">{{x}}</td>
+                    </tr>
+                    <tbody>
+                  </table>
+                </div>
+              </ng-container>
+            </div>
 
+          </div>
+          <div class="u-align-left u-container-style u-layout-cell u-palette-1-base u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
+            <div class="u-container-layout u-container-layout-2">
+              <h2 class="u-text u-text-default u-text-1">Estimating...</h2>
+              <p class="u-text u-text-2"> We are estimating the noise transition matrix based on your dataset. The waiting time depends on various factors such as dimension of input features, number of classes.&nbsp;You can retrive the result later by your token:&nbsp;<br>xxx.<br>
+                <br>We can also detect noisy labels. Take a try!
+              </p>
+              <a href="https://proceedings.mlr.press/v139/zhu21e.html" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1" target="_blank">learn more</a>
+              <ng-container *ngIf="(this.uploadFlag)" >
+                <a class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" (click)="changeFile.emit(1)">Upload</a>
+                </ng-container>
+              <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(uploadFlag)">
+                <a class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" (click)="startCalculation($event)">Get Matrix</a>
+              </ng-container>
+              <ng-container *ngIf="this.calculatedFlag">
+              <a class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" (click)="changePage($event)">Detection</a>
+              </ng-container>
+<!--              <a href="Detection.html" data-page-id="3037523754" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" target="_blank">Detection</a>-->
+            </div>
+          </div>
+        </div>
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile id ="content">
-      <mat-card class = 'content'>
-        <h1>Noise Matrix</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non scelerisque dui, non ornare nisi. Nam laoreet pulvinar quam quis fermentum. Etiam efficitur leo sed egestas tempus. Curabitur eu condimentum nibh, in efficitur ligula. Donec vehicula dolor eu risus pulvinar, vel mollis est maximus. Curabitur erat quam, porta eu est sit amet, vestibulum sollicitudin purus. Cras id lacus sed magna pretium interdum in in erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque porttitor sed risus sed tempor. Aliquam posuere ipsum ipsum, non pharetra nisl scelerisque vel.
-        </p>
-
-        <button mat-button color="primary" style="position:absolute;right:10%;bottom:10%" [disabled]="!this.calculatedFlag" (click)="changePage($event)">
-          Find Noisy Instance
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-
-
-  <div *ngIf="!(this.calculatedFlag||this.calculatingFlag)">
-    <mat-grid-list cols="1" rowHeight="2:1">
-
-      <mat-grid-tile>
-
-        <mat-card class="full">
-          <ng-container *ngIf="!(this.uploadFlag)">
-            <button mat-button color="primary" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Change Dataset</button>
-          </ng-container>
-          <ng-container *ngIf="(this.uploadFlag)" >
-            <button mat-button color="accent" (click)="changeDataSet($event)" style="position: absolute;top: 10%;right: 10%">Upload Dataset</button>
-          </ng-container>
-          <ng-container *ngIf="!this.calculatingFlag&&!this.calculatedFlag&&!(this.uploadFlag)">
-            <button mat-button (click)="startCalculation($event)" color="warn" style="position: absolute;top: 15%;right: 10%">
-              Calculate Result
-            </button>
-          </ng-container>
-          <mat-card-title>Noise Transition Matrix T</mat-card-title>
-          <ul>
-            <li style="size: 12px">Each element of T : T_ij = P ( ŷ = j | y = i ).Clean label i ➜ Noisy label j
-            </li>
-            <li>Example: Our self-collected CIFAR-10 human annotations:
-            </li>
-            <img src="assets/noise_matrix.png">
-            <li>
-            The Noise Transition Matrix T will be:
-              <div class="table-wrapper">
-
-                <table class="fl-table">
-                  <thead>
-                  <tr>
-                    <th>Label</th>
-                    <th>1</th>
-                    <th>2</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th>1</th>
-                    <td>0.6</td>
-                    <td>0.4</td>
-                  </tr>
-                  <tr>
-                    <th>2</th>
-                    <td>0.2</td>
-                    <td>0.8</td>
-                  </tr>
-                  <tbody>
-                </table>
-              </div>
-            </li>
-            <li>Learn how we did Find the Matrix:<br>
-              <button mat-button color="warn" style="margin: 10px">
-                <mat-icon>description</mat-icon>
-                Paper
-              </button>
-              <button mat-button color="accent">
-                <mat-icon>code</mat-icon>
-                Code
-              </button>
-            </li>
-
-
-          </ul>
-          <mat-card-actions align="">
-
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+    </div>
   </div>
+</section>
+<section class="u-clearfix u-grey-5 u-section-2" id="carousel_c9da">
+  <div class="u-expanded-width u-palette-1-dark-1 u-shape u-shape-rectangle u-shape-1"></div>
+  <div class="u-container-style u-group u-shape-rectangle u-white u-group-1">
+    <div class="u-container-layout u-container-layout-1">
+      <img class="u-image u-image-default u-image-1" src="./assets/images/noiseT.png" alt="" data-image-width="3771" data-image-height="1685">
+    </div>
+  </div>
+  <p class="u-text u-text-default u-text-1"><b>Note:&nbsp;</b>
+    <br>We estimate an averaged T for the whole dataset<br>(assuming&nbsp;class-dependent label noise that captures random flipping errors).<br>
+    <br><b>References:</b>
+    <br><u>Class-dependent label noise:&nbsp;</u>
+    <br>[1] N. Natarajan, et al.&nbsp;Learning with
+    noisy labels.​&nbsp;<i>NeurIPS'13.</i>&nbsp;<br>[2] T. Liu &amp; D. Tao. Classification
+    with noisy labels by importance reweighting.&nbsp;<i>TPAMI'15.&nbsp;</i>
+    <br>[3] G. Patrini, et al. ​Making deep neural networks
+    robust to label noise: A loss correction approach.&nbsp;<i>CVPR’17.</i>&nbsp;<br>[4] Y. Liu &amp; H. Guo. ​Peer
+    loss functions: Learning from noisy labels without knowing noise rates.​&nbsp;<i>ICML’20.</i>&nbsp;&nbsp;<br>
+    <br><u>CIFAR-10 human annotations:</u>
+    <br>[5] J. Wei, et al. Learning with noisy labels revisited: A study using real-world human annotations. <i>ICLR'22.</i>
+    <br>
+  </p>
+</section>
+
+
+
+<app-footer></app-footer>
+<section class="u-backlink u-clearfix u-grey-80">
+  <a class="u-link" href="https://nicepage.com/html5-template" target="_blank">
+    <span>HTML5 Templates</span>
+  </a>
+  <p class="u-text">
+    <span>created with</span>
+  </p>
+  <a class="u-link" href="https://nicepage.com/wysiwyg-html-editor" target="_blank">
+    <span>Visual HTML Editor</span>
+  </a>.
+</section>
 </body>
+</html>

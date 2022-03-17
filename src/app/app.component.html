@@ -1,27 +1,15 @@
-
-
-
-<mat-tab-group mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
-  <mat-tab label="Introduction">
-    <ng-template matTabContent>
-      <app-introduction (changeFile)="changeFile($event)"></app-introduction>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Upload">
-    <ng-template matTabContent>
-      <app-upload (changePage)="changeFile($event)" (changeToken)="changeToken($event)" [token]="this.token"></app-upload>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Noise Matrix">
-    <ng-template matTabContent>
-      <app-noise-matrix (changeFile)="changeFile($event)" [token]="this.token" ></app-noise-matrix>
-    </ng-template>
-
-  </mat-tab>
-  <mat-tab label="Noise Detect">
-    <ng-template matTabContent>
-    <app-detection (changeFile)="changeFile($event)" [token]="this.token"></app-detection>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
-<!--<app-dashboard></app-dashboard>-->
+  <ng-container *ngIf="this.selected.value==0">
+    <app-introduction (changePage)="this.changePage($event)"></app-introduction>
+  </ng-container>
+  <ng-container *ngIf="this.selected.value==1">
+    <app-upload [token]="token" (changeToken)="changeToken($event)" (changePage)="this.changePage($event)"></app-upload>
+  </ng-container>
+  <ng-container *ngIf="this.selected.value==2">
+    <app-noise-matrix (changeFile)="changePage($event)" [token]="this.token"></app-noise-matrix>
+  </ng-container>
+  <ng-container *ngIf="this.selected.value==3">
+    <app-detection (changeFile)="changePage($event)" [token]="this.token"></app-detection>
+  </ng-container>
+  <ng-container *ngIf="this.selected.value==4">
+    <app-about-us (ChangePage)="changePage($event)"></app-about-us>
+  </ng-container>

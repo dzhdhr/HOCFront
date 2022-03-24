@@ -109,30 +109,67 @@
         </div>
       </div>
     </div>
+
+    <p class="u-align-left u-text u-text-8">TODO: Add selection: USE CLIP</p>
+  </div>
+</section>
+<section class="u-align-center u-clearfix u-grey-5 u-section-2" id="carousel_729f">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <p class="u-align-left u-text u-text-1">
+      <span class="u-text-black"><b>Data Requirements:</b>
+        <br><b>Feature File</b>: *.npy [Numpy array: (#Instances, FeatureDimension)]<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [E.g., feature.npy, shape: (10k, 128)]<br><b>Label File</b>: *.npy [Numpy array: (​#Instances,)]
+      </span>
+      <br>
+      <br><b>Note: </b>Uploading pre-extracted features is prefered. For image classifications, if the input is the raw image (e.g., with shape 32*32*3), please select <u>USE CLIP</u>. See more details in TIPS below.
+    </p>
+    <div class="u-image u-image-circle u-preserve-proportions u-image-1" alt="" data-image-width="1280" data-image-height="1280"></div>
+
+
+    <!-- 
     <div class="u-form u-form-1">
-<!--      <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form-1" style="padding: 10px;">-->
+              <div class="u-form-group u-form-name">
+                <label for="name-7e74" class="u-label u-label-1">Already have a token? Input here!</label>
+                  <mat-form-field appearance="fill">
+                    <input matInput [(ngModel)]="this.enteredToken"  placeholder="Enter your Token" [value]="this.enteredToken" class="u-input u-input-rectangle u-white"/>
+                  </mat-form-field>
+                  <button mat-button color="accent"   (click)="enterToken($event)">Enter</button>
+              </div>
+              <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+              <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+              <input type="hidden" value="" name="recaptchaResponse">
+    </div>
+    -->
+
+    <div class="u-form u-form-1">
+      <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form-1" style="padding: 10px;">
         <div class="u-form-group u-form-name">
-            YourToken
-            <mat-form-field appearance="fill">
-              <input matInput [(ngModel)]="this.enteredToken" placeholder="Token" [value]="this.enteredToken"/>
-            </mat-form-field>
-            <button mat-button color="accent"   (click)="enterToken($event)">Enter</button>
-<!--          </mat-card>-->
+          <label for="name-7e74" class="u-label u-label-1">Already have a token? Input here!</label>
+          <input type="text" matInput [(ngModel)]="this.enteredToken"  placeholder="Enter your Token" [value]="this.enteredToken" id="name-7e74" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        </div>
+        <!-- <button mat-button color="accent"   (click)="enterToken($event)">Enter</button> -->
+        <div class="u-align-left u-form-group u-form-submit">
+          <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+          <input type="submit" value="submit" class="u-form-control-hidden">
         </div>
         <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
         <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
         <input type="hidden" value="" name="recaptchaResponse">
-<!--      </form>-->
+      </form>
     </div>
+    <a (click)="changePage.emit(2)" class="u-btn u-button-style u-none u-text-hover-palette-2-base u-text-palette-1-base u-btn-2">Estimate now!&nbsp;<span class="u-icon u-text-palette-1-base"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
+    </a>
   </div>
 </section>
-<section class="u-align-center u-clearfix u-image u-section-3">
+<!-- <section class="u-align-center u-clearfix u-image u-section-3">
+
   <button mat-button (click)="changePage.emit(2)">Next page</button>
-</section>
-<section class="u-align-center u-clearfix u-image u-section-2" id="carousel_e979" data-image-width="1200" data-image-height="1048">
+</section> -->
+<section class="u-align-center u-clearfix u-image u-section-3" id="carousel_e979" data-image-width="1200" data-image-height="1048">
   <div class="u-clearfix u-sheet u-sheet-1">
-    <h3 class="u-text u-text-body-alt-color u-text-default u-text-1">testimonials</h3>
+    <h3 class="u-text u-text-body-alt-color u-text-default u-text-1">TIPS</h3>
+    
     <div id="carousel-5989" data-interval="5000" data-u-ride="carousel" class="u-carousel u-slider u-slider-1">
+      
       <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
         <li data-u-target="#carousel-5989" class="u-active u-grey-30 u-shape-circle" data-u-slide-to="0" style="width: 10px; height: 10px;"></li>
         <li data-u-target="#carousel-5989" class="u-grey-30 u-shape-circle" data-u-slide-to="1" style="width: 10px; height: 10px;"></li>
@@ -142,6 +179,7 @@
         <div class="u-active u-align-center u-carousel-item u-container-style u-palette-1-light-3 u-shape-rectangle u-slide u-carousel-item-1">
           <div class="u-container-layout u-container-layout-1">
             <h4 class="u-text u-text-2">Image Data<br>
+              <p class="u-align-left u-text u-text-8">TODO: Slide click</p>
             </h4>
             <p class="u-align-left u-large-text u-text u-text-variant u-text-3">
                   <span style="font-size: 1.125rem;"><b>Instructions:</b>

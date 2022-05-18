@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-
+import * as $ from 'src/assets/lib/jquery';
 
 export interface Tile {
   color: string;

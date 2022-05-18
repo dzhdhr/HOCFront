@@ -84,7 +84,7 @@
             <h5 class="u-text u-text-default u-text-2">Feature File</h5>
             <br>
             <input #FeatureInput hidden (change)="changeFile($event, 'feature')" type="file" accept=".npy" onclick="this.value=null" />
-            <input  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Feature File" [value]="this.FeatureFile.name" disabled  />
+            <input  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Feature File" [value]="this.featureFile" disabled  />
             <button class="u-btn u-btn-submit u-button-style" (click)="FeatureInput.click()">Feature File</button>
           </div>
         </div>
@@ -94,7 +94,7 @@
             <h5 class="u-text u-text-default u-text-4">Label File</h5>
             <br>
             <input #LabelInput hidden (change)="changeFile($event, 'label')" type="file" onclick="this.value=null" accept=".npy" />
-            <input class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Label File" [value]="this.LabelFile.name" disabled/>
+            <input class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Label File" [value]="this.labelFile" disabled/>
             <button class="u-btn u-btn-submit u-button-style" (click)="LabelInput.click()">Label File</button>
           </div>
         </div>
@@ -125,7 +125,7 @@
     <div class="u-image u-image-circle u-preserve-proportions u-image-1" alt="" data-image-width="1280" data-image-height="1280"></div>
 
 
-    <!-- 
+    <!--
     <div class="u-form u-form-1">
               <div class="u-form-group u-form-name">
                 <label for="name-7e74" class="u-label u-label-1">Already have a token? Input here!</label>
@@ -147,9 +147,9 @@
           <input type="text" matInput [(ngModel)]="this.enteredToken"  placeholder="Enter your Token" [value]="this.enteredToken" id="name-7e74" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
         </div>
         <!-- <button mat-button color="accent"   (click)="enterToken($event)">Enter</button> -->
-        <div class="u-align-left u-form-group u-form-submit">
+        <div class="u-align-left u-form-group u-form-submit" (click)="enterToken($event)" >
           <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-          <input type="submit" value="submit" class="u-form-control-hidden">
+          <input type="submit" value="submit"  class="u-form-control-hidden">
         </div>
         <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
         <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
@@ -167,9 +167,9 @@
 <section class="u-align-center u-clearfix u-image u-section-3" id="carousel_e979" data-image-width="1200" data-image-height="1048">
   <div class="u-clearfix u-sheet u-sheet-1">
     <h3 class="u-text u-text-body-alt-color u-text-default u-text-1">TIPS</h3>
-    
+
     <div id="carousel-5989" data-interval="5000" data-u-ride="carousel" class="u-carousel u-slider u-slider-1">
-      
+
       <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
         <li data-u-target="#carousel-5989" class="u-active u-grey-30 u-shape-circle" data-u-slide-to="0" style="width: 10px; height: 10px;"></li>
         <li data-u-target="#carousel-5989" class="u-grey-30 u-shape-circle" data-u-slide-to="1" style="width: 10px; height: 10px;"></li>

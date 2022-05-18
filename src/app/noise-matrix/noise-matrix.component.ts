@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpParams, HttpRequest, HttpResponse} from '@angular/common/http';
 import {filter} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-noise-matrix',
@@ -9,6 +10,14 @@ import {filter} from 'rxjs/operators';
 })
 
 export class NoiseMatrixComponent implements OnInit {
+  public stepProgress = 0;
+  public batchProgress = 0;
+  public batchProgress$: Observable<number> = new Observable(observer => {
+    setInterval(() => observer.next(this.batchProgress), 100);
+  });
+  public stepProgress$: Observable<number> = new Observable(observer => {
+    setInterval(() => observer.next(this.stepProgress), 100);
+  });
   @Input()
   public token: string;
   public result: number[][];
@@ -28,30 +37,27 @@ export class NoiseMatrixComponent implements OnInit {
       console.log('need upload');
       this.uploadFlag = true;
     }
+    //
     else{
-      const req = new HttpRequest('GET', '/api/checkstatus?token=' + this.token);
+      const req = new HttpRequest('GET', '/api/estimation?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
           console.log(rest);
-          this.uploadFlag = !(rest.body['feature'] && rest.body['label']);
+          this.uploadFlag = rest.body.featureFile == null || rest.body.labelFile == null;
           console.log(this.uploadFlag);
-          this.calculatingFlag = rest.body['calculating'];
-          this.calculatedFlag = rest.body['calculated'];
-
-
+          this.calculatingFlag = ! (rest.body.matrixLog === '');
+          this.calculatedFlag = ! (rest.body.T == null);
           console.log('calcuated:' + this.calculatedFlag);
           console.log('calcuating:' + this.calculatingFlag);
-          this.result = rest.body['payload'];
+          this.result = rest.body.T;
+          this.content = rest.body.matrixLog;
         },
       );
     }
   }
-  changeDataSet($event: MouseEvent): void {
-    this.changeFile.emit(1);
-  }
   startCalculation($event: MouseEvent): void{
     console.log('start calculating');
-    const req = new HttpRequest('GET', '/api/calculate?token=' + this.token);
+    const req = new HttpRequest('GET', '/api/estimation/calculate?token=' + this.token);
     this.http.request(req).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);
@@ -64,12 +70,14 @@ export class NoiseMatrixComponent implements OnInit {
       }
     );
     this.calculatingFlag = true;
-    const getlogreq = new HttpRequest('GET', '/api/getlog?file=' + this.token);
+    const getlogreq = new HttpRequest('GET', '/api/log?token=' + this.token);
     this.interval = setInterval(() => {
       this.http.request(getlogreq).subscribe(
         (rest: HttpResponse<any>) => {
           if (rest.body != undefined) {
-            console.log(rest.body.log);
+            console.log(rest.body);
+            this.batchProgress = rest.body.batchProgress;
+            this.stepProgress = rest.body.stepProgress;
             this.content = rest.body.log;
           }
           if (!this.calculatingFlag){

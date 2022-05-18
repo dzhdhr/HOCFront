@@ -1,134 +1,4 @@
-<!--<body >-->
-<!--<mat-grid-list cols="2" rowHeight="1:1" *ngIf="this.calculatedFlag||this.calculatingFlag">-->
-<!--  <mat-grid-tile id="content">-->
-<!--    <mat-card class="content">2</mat-card>-->
-<!--  </mat-grid-tile>-->
-<!--  <mat-grid-tile id ="form"  class="tabel">-->
-<!--    <div>-->
 
-<!--      <ng-container *ngIf="this.calculatedFlag">-->
-<!--        <h2> Find {{this.result.length}} Noisy Instance</h2>-->
-<!--        <div class="table-wrapper">-->
-
-<!--          <table class="fl-table">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--              <th>Rank</th>-->
-<!--              <th>Index</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr *ngFor="let item of [].constructor(10);let i = index">-->
-<!--              <th>{{start+i}}</th>-->
-<!--              <td>{{this.result[start+i]}}</td>-->
-<!--            </tr>-->
-<!--            <tbody>-->
-<!--          </table>-->
-<!--          <div style="display: flex;justify-content: space-between">-->
-
-<!--            <button mat-button color="primary" (click)="decrease()">-->
-<!--              <mat-icon>keyboard_arrow_left</mat-icon>-->
-<!--              Prev 10-->
-<!--            </button>-->
-<!--            <button mat-button color="primary" (click)="increase()">-->
-<!--              Next 10-->
-<!--              <mat-icon>keyboard_arrow_right</mat-icon>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </ng-container>-->
-
-<!--    </div>-->
-<!--    <div>-->
-<!--      <ng-container *ngIf="!(this.uploadFlag)">-->
-<!--        <button mat-button color="primary" (click)="changeDataSet($event)">Change Dataset</button>-->
-<!--      </ng-container>-->
-<!--      <ng-container *ngIf="(this.uploadFlag)">-->
-<!--        <button mat-button color="accent" (click)="changeDataSet($event)">Upload Dataset</button>-->
-<!--      </ng-container>-->
-<!--      <ng-container *ngIf="!this.hasMatrix&&!(this.uploadFlag)">-->
-<!--        <button mat-button color="primary" (click)="calculateDataSet($event)">Calculate Matrix</button>-->
-<!--      </ng-container>-->
-<!--      <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.uploadFlag)">-->
-<!--        <button mat-button color="warn" (click)="getNoise($event)" >Calculate Noise</button>-->
-<!--      </ng-container>-->
-<!--    </div>-->
-<!--  </mat-grid-tile>-->
-<!--</mat-grid-list>-->
-<!--<div *ngIf="!(this.calculatedFlag||this.calculatingFlag)">-->
-<!--  <mat-grid-list cols="1" rowHeight="2:1">-->
-
-<!--    <mat-grid-tile>-->
-
-<!--      <mat-card class="full">-->
-<!--        <ng-container *ngIf="!(this.uploadFlag)">-->
-<!--          <button mat-button color="primary" style="position: absolute;top: 5%;right: 10%" (click)="changeDataSet($event)">Change Dataset</button>-->
-<!--        </ng-container>-->
-<!--        <ng-container *ngIf="(this.uploadFlag)">-->
-<!--          <button mat-button color="accent" style="position: absolute;top: 10%;right: 10%" (click)="changeDataSet($event)">Upload Dataset</button>-->
-<!--        </ng-container>-->
-<!--        <ng-container *ngIf="!this.hasMatrix&&!(this.uploadFlag)">-->
-<!--          <button mat-button color="primary" style="position: absolute;top: 10%;right: 10%" (click)="calculateDataSet($event)">Calculate Matrix</button>-->
-<!--        </ng-container>-->
-<!--        <ng-container *ngIf="this.hasMatrix&&!this.calculatedFlag&&!(this.uploadFlag)">-->
-<!--          <button mat-button color="warn"  style="position: absolute;top: 10%;right: 10%" (click)="getNoise($event)" >Calculate Noise</button>-->
-<!--        </ng-container>-->
-<!--        <mat-card-title>Noise Transition Matrix T</mat-card-title>-->
-<!--        <ul>-->
-<!--          <li style="size: 12px">Each element of T : T_ij = P ( ŷ = j | y = i ).Clean label i ➜ Noisy label j-->
-<!--          </li>-->
-<!--          <li>Example: Our self-collected CIFAR-10 human annotations:-->
-<!--          </li>-->
-<!--          <img src="assets/noise_matrix.png">-->
-<!--          <li>-->
-<!--            The Noise Transition Matrix T will be:-->
-<!--            <div class="table-wrapper">-->
-
-<!--              <table class="fl-table">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                  <th>Label</th>-->
-<!--                  <th>1</th>-->
-<!--                  <th>2</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr>-->
-<!--                  <th>1</th>-->
-<!--                  <td>0.6</td>-->
-<!--                  <td>0.4</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                  <th>2</th>-->
-<!--                  <td>0.2</td>-->
-<!--                  <td>0.8</td>-->
-<!--                </tr>-->
-<!--                <tbody>-->
-<!--              </table>-->
-<!--            </div>-->
-<!--          </li>-->
-<!--          <li>Learn how we did Find the Matrix:<br>-->
-<!--            <button mat-button color="warn" style="margin: 10px">-->
-<!--              <mat-icon>description</mat-icon>-->
-<!--              Paper-->
-<!--            </button>-->
-<!--            <button mat-button color="accent">-->
-<!--              <mat-icon>code</mat-icon>-->
-<!--              Code-->
-<!--            </button>-->
-<!--          </li>-->
-
-
-<!--        </ul>-->
-<!--        <mat-card-actions align="">-->
-
-<!--        </mat-card-actions>-->
-<!--      </mat-card>-->
-<!--    </mat-grid-tile>-->
-<!--  </mat-grid-list>-->
-<!--</div>-->
-
-<!--</body>-->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en-AM">
 <head>
@@ -138,21 +8,10 @@
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>Detection</title>
-<!--  <link rel="stylesheet" href="nicepage.css" media="screen">-->
-<!--  <link rel="stylesheet" href="Detection.css" media="screen">-->
-<!--  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>-->
-<!--  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>-->
   <meta name="generator" content="Nicepage 4.5.4, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
 
-
-
-<!--  <script type="application/ld+json">{-->
-<!--    "@context": "http://schema.org",-->
-<!--    "@type": "Organization",-->
-<!--    "name": "HOC Demo"-->
-<!--    }</script>-->
   <meta name="theme-color" content="#232b79">
   <meta property="og:title" content="Detection">
   <meta property="og:description" content="">
@@ -248,7 +107,10 @@
               <p class="u-align-left u-text u-text-8">TODO: Replace xxx with the token</p>
               <p class="u-align-left u-text u-text-8">TODO: Print logs</p>
               <a href="https://arxiv.org/pdf/2110.06283.pdf" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1" target="_blank">learn more</a>
-              <ng-container *ngIf="!calculatedFlag&&!calculatingFlag">
+              <ng-container *ngIf="uploadFlag">
+                <a (click)="changeFile.emit(0)" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" >Upload</a>
+              </ng-container>
+              <ng-container *ngIf="!calculatedFlag&&hasMatrix&&calculatingFlag">
               <a (click)="getNoise($event)" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" >Estimation</a>
               </ng-container>
             </div>

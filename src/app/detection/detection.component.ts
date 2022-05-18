@@ -33,21 +33,16 @@ export class DetectionComponent implements OnInit {
     }
     else{
       // tslint:disable-next-line:max-line-length
-      const req = new HttpRequest('GET', '/api/checkdetectionresult?token=' + this.token);
+      const req = new HttpRequest('GET', '/api/estimation?token=' + this.token);
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
         (rest: HttpResponse<any>) => {
-          this.calculatingFlag = rest.body.calculating;
-          this.uploadFlag = !(rest.body['feature'] && rest.body['label']);
-
-          this.hasMatrix = rest.body.matrix;
-          this.calculatedFlag = rest.body.calculated;
-          console.log(rest);
-          console.log(this.uploadFlag);
-          console.log('hasmatrix' + this.hasMatrix);
-          console.log('calcuated:' + this.calculatedFlag);
-          console.log('calcuating:' + this.calculatingFlag);
-
-          this.result = rest.body.payload;
+          console.log(rest.body);
+          this.calculatingFlag = rest.body.T != null;
+          this.uploadFlag =  this.uploadFlag = rest.body.featureFile == null || rest.body.labelFile == null;
+          this.calculatingFlag = ! (rest.body.nosiyLog === '');
+          this.hasMatrix = rest.body.T != null;
+          this.calculatedFlag = rest.body.noisyLabel!=null;
+          this.result = rest.body.noisyLabel;
           console.log(this.result);
         },
       );
@@ -59,12 +54,12 @@ export class DetectionComponent implements OnInit {
   }
 
   getNoise($event: MouseEvent): void {
-    const req = new HttpRequest('GET', '/api/getnoise?token=' + this.token);
+    const req = new HttpRequest('GET', '/api/detection/calculate?token=' + this.token);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
         console.log(rest);
         this.result = rest.body.result;
-        console.log(this.result);
+        console.log("result"+this.result);
         this.calculatedFlag = true;
       }
     );

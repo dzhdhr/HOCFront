@@ -65,10 +65,24 @@
       <div class="u-layout" style="">
         <div class="u-layout-row" style="">
           <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1080" data-image-height="1080">
-            <div class="u-container-layout u-valign-middle u-container-layout-1" src="">
-              <ng-container *ngIf="calculatingFlag&& !calculatedFlag">{{this.content}}</ng-container>
+            <div  class="u-container-layout u-valign-middle u-container-layout-1" src="">
+              <ng-container  *ngIf="calculatingFlag&& !calculatedFlag">
+                <div class ="progress">
+                <div  class = "log" style="overflow-x: auto">
+                  <pre>{{this.content}}</pre>
+                </div>
+                <div class = "spinner">
+                  <span>Extract Feature Progress</span>
+                  <mat-progress-bar mode="determinate" [value]="batchProgress$|async" ></mat-progress-bar>
+                  <span>Step Progress</span>
+                  <mat-progress-bar mode="determinate" [value]="stepProgress$|async"></mat-progress-bar>
+                </div>
+                </div>
+              </ng-container>
+
               <ng-container *ngIf="calculatedFlag">
-                <div class="table-wrapper">
+                <div class ="progress">
+                <div class="spinner">
                   <table class="fl-table">
                     <thead>
                     <tr>
@@ -84,6 +98,10 @@
                     <tbody>
                   </table>
                 </div>
+                  <div  class = "log" style="overflow-x: auto">
+                    <pre>{{this.content}}</pre>
+                  </div>
+                </div>
               </ng-container>
             </div>
 
@@ -91,10 +109,9 @@
           <div class="u-align-left u-container-style u-layout-cell u-palette-1-base u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
             <div class="u-container-layout u-container-layout-2">
               <h2 class="u-text u-text-default u-text-1">Estimating...</h2>
-              <p class="u-text u-text-2"> We are estimating the noise transition matrix based on your dataset. The waiting time depends on various factors such as dimension of input features, number of classes.&nbsp;You can retrive the result later by your token:&nbsp;<br>xxx.<br>
+              <p class="u-text u-text-2"> We are estimating the noise transition matrix based on your dataset. The waiting time depends on various factors such as dimension of input features, number of classes.&nbsp;You can retrive the result later by your token:&nbsp;<br>{{this.token}}<br>
                 <br>We can also detect noisy labels. Take a try!
               </p>
-              <p class="u-align-left u-text u-text-8">TODO: Replace xxx with the token</p>
               <p class="u-align-left u-text u-text-8">TODO: Print logs</p>
               <a href="https://proceedings.mlr.press/v139/zhu21e.html" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1" target="_blank">learn more</a>
               <ng-container *ngIf="(this.uploadFlag)" >
@@ -106,7 +123,6 @@
               <ng-container *ngIf="this.calculatedFlag">
               <a class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" (click)="changePage($event)">Detection</a>
               </ng-container>
-<!--              <a href="Detection.html" data-page-id="3037523754" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" target="_blank">Detection</a>-->
             </div>
           </div>
         </div>

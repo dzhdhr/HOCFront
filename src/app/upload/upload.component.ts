@@ -10,7 +10,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./upload.component.css', '../../assets/nicepage.css']
 })
 export class UploadComponent implements OnInit {
-
+  public featureFile = '';
+  public labelFile = '';
   FeatureFile: File = new File([], '');
   LabelFile: File = new File([], '');
   public enteredToken = '';
@@ -30,12 +31,21 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log("here");
-    console.log(this.token);
+    this.getFileName(this.token);
   }
 
+getFileName(token: string): void{
+  if (token != undefined) {
+    const req = new HttpRequest('GET', '/api/estimation?token=' + this.token);
+    this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
+      (rest: HttpResponse<any>) => {
+        this.featureFile = rest.body.featureFile;
+        this.labelFile = rest.body.labelFile;
+      });
+  }
+}
   uploadFile(Body: FormData): Observable<any> {
-    const req = new HttpRequest('POST', '/api/upload', Body);
+    const req = new HttpRequest('POST', '/api/file/upload', Body);
     return new Observable((observable) => {
       this.http.request(req).pipe(filter(e => e instanceof HttpResponse))
         .subscribe((data) => {
@@ -66,21 +76,22 @@ export class UploadComponent implements OnInit {
     this.uploadFile(Formdata).subscribe(
       res => {
         this.token = res.body.body.token;
+        console.log(res.body);
         this.changeToken.emit(this.token);
         this.snackBar.open('Upload Success', 'Close');
       }
     );
+    this.getFileName(this.token);
   }
 
   enterToken($event: MouseEvent): void {
-    console.log(this.enteredToken);
-    const req = new HttpRequest('GET', '/api/checktoken?token=' + this.enteredToken);
+    const req = new HttpRequest('GET', '/api/file/checktoken?token=' + this.enteredToken);
     this.http.request(req).pipe(filter(e => e instanceof HttpResponse)).subscribe(
       (rest: HttpResponse<any>) => {
-        // console.log(rest);
         if (rest.body.has_token){
           this.token = this.enteredToken;
           this.changeToken.emit(this.token);
+          this.getFileName(this.token);
         }
       },
     );

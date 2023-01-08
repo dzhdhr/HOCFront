@@ -64,7 +64,9 @@
     <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
       <div class="u-layout" style="">
         <div class="u-layout-row" style="">
-          <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1080" data-image-height="1080">
+          <!-- <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1080" data-image-height="1080"> -->
+            <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-block-7465-4" src="">
+              <div class="u-border-5 u-border-black u-container-layout u-block-7465-10" src="">
             <div  class="u-container-layout u-valign-middle u-container-layout-1" src="">
               <ng-container  *ngIf="calculatingFlag&& !calculatedFlag">
                 <div class ="progress">
@@ -105,14 +107,14 @@
               </ng-container>
             </div>
 
-          </div>
-          <div class="u-align-left u-container-style u-layout-cell u-palette-1-base u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
+          </div></div>
+          <div class="u-align-left u-container-style u-layout-cell u-palette-1-base  u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
             <div class="u-container-layout u-container-layout-2">
               <h2 class="u-text u-text-default u-text-1">Estimating...</h2>
               <p class="u-text u-text-2"> We are estimating the noise transition matrix based on your dataset. The waiting time depends on various factors such as dimension of input features, number of classes.&nbsp;You can retrive the result later by your token:&nbsp;<br>{{this.token}}<br>
                 <br>We can also detect noisy labels. Take a try!
               </p>
-              <p class="u-align-left u-text u-text-8">TODO: Print logs</p>
+              <!-- <p class="u-align-left u-text u-text-8">TODO: Print logs</p> -->
               <a href="https://proceedings.mlr.press/v139/zhu21e.html" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1" target="_blank">learn more</a>
               <ng-container *ngIf="(this.uploadFlag)" >
                 <a class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2" (click)="changeFile.emit(1)">Upload</a>

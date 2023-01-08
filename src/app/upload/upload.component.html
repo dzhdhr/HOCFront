@@ -85,6 +85,7 @@
             <br>
             <input #FeatureInput hidden (change)="changeFile($event, 'feature')" type="file" accept=".npy" onclick="this.value=null" />
             <input  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Feature File" [value]="this.featureFile" disabled  />
+            <span>User CLIP</span><input type="checkbox" [(ngModel)]="this.useClip">
             <button class="u-btn u-btn-submit u-button-style" (click)="FeatureInput.click()">Feature File</button>
           </div>
         </div>

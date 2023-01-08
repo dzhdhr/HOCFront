@@ -15,7 +15,6 @@ export class UploadComponent implements OnInit {
   FeatureFile: File = new File([], '');
   LabelFile: File = new File([], '');
   public enteredToken = '';
-  useClip: boolean;
   @Input()
   token: string;
   @Output()
@@ -33,7 +32,6 @@ export class UploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFileName(this.token);
-    this.useClip = true;
   }
 
 getFileName(token: string): void{
@@ -67,17 +65,13 @@ getFileName(token: string): void{
   }
 
   changeFile($event: any, type: string): void {
-    console.log(this.useClip);
+    console.log(type);
     const Formdata = new FormData();
     Formdata.append('file', $event.target.files[0]);
     Formdata.append('fileType', type);
-    // @ts-ignore
-    Formdata.append('useClip', this.useClip);
     console.log($event.target.files[0].filename);
     if (this.token != undefined){
       Formdata.append('token', this.token);
-      // @ts-ignore
-
     }
     this.uploadFile(Formdata).subscribe(
       res => {
